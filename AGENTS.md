@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Store imported original paragraph HTML in a shared content module and render it through a single trusted-text component to preserve source wording across redesigned pages.
+- Keep shared navigation and footer in the root route so every preserved URL has the same site shell.
+- Keep the contact form client-side and explicitly unavailable for delivery until a verified sending service is connected; never simulate a successful delivery.

@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DatenschutzerklaerungRouteImport } from './routes/datenschutzerklaerung'
+import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as LeistungenPreiseRouteImport } from './routes/leistungen-preise'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DatenschutzerklaerungRoute = DatenschutzerklaerungRouteImport.update({
+  id: '/datenschutzerklaerung',
+  path: '/datenschutzerklaerung',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeistungenPreiseRoute = LeistungenPreiseRouteImport.update({
+  id: '/leistungen-preise',
+  path: '/leistungen-preise',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/datenschutzerklaerung': typeof DatenschutzerklaerungRoute
+  '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
+  '/leistungen-preise': typeof LeistungenPreiseRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/datenschutzerklaerung': typeof DatenschutzerklaerungRoute
+  '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
+  '/leistungen-preise': typeof LeistungenPreiseRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/datenschutzerklaerung': typeof DatenschutzerklaerungRoute
+  '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
+  '/leistungen-preise': typeof LeistungenPreiseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/datenschutzerklaerung'
+    | '/impressum'
+    | '/kontakt'
+    | '/leistungen-preise'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/datenschutzerklaerung'
+    | '/impressum'
+    | '/kontakt'
+    | '/leistungen-preise'
+  id:
+    | '__root__'
+    | '/'
+    | '/datenschutzerklaerung'
+    | '/impressum'
+    | '/kontakt'
+    | '/leistungen-preise'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DatenschutzerklaerungRoute: typeof DatenschutzerklaerungRoute
+  ImpressumRoute: typeof ImpressumRoute
+  KontaktRoute: typeof KontaktRoute
+  LeistungenPreiseRoute: typeof LeistungenPreiseRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/datenschutzerklaerung': {
+      id: '/datenschutzerklaerung'
+      path: '/datenschutzerklaerung'
+      fullPath: '/datenschutzerklaerung'
+      preLoaderRoute: typeof DatenschutzerklaerungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leistungen-preise': {
+      id: '/leistungen-preise'
+      path: '/leistungen-preise'
+      fullPath: '/leistungen-preise'
+      preLoaderRoute: typeof LeistungenPreiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DatenschutzerklaerungRoute: DatenschutzerklaerungRoute,
+  ImpressumRoute: ImpressumRoute,
+  KontaktRoute: KontaktRoute,
+  LeistungenPreiseRoute: LeistungenPreiseRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
